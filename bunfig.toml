@@ -1,2 +1,7 @@
+jsx = "react-jsx"
+jsxImportSource = "react"
+logLevel = "debug"
+telemetry = false
+
 [define]
 "import.meta.env.VITE_APP_TITLE" = "'Blue Violet'"

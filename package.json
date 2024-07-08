@@ -5,11 +5,10 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "bun run biome lint .",
     "format:write": "bun run biome format --write .",
     "clean": "rm -rf ./dist",
-    "build": "bun --bun vite build",
+    "build": "bun --bun vite build --watch",
     "dev": "bun --bun vite dev",
     "preview": "bun --bun vite preview"
   },
@@ -31,6 +30,7 @@
     "@types/react": "npm:types-react@rc",
     "@types/react-dom": "npm:types-react-dom@rc",
     "@vitejs/plugin-react-swc": "^3.7.0",
+    "rolldown": "^0.11.0",
     "tailwindcss": "^4.0.0-alpha.17",
     "vite": "^5.3.3",
     "vite-tsconfig-paths": "^4.3.2"

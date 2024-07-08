@@ -5,17 +5,17 @@
   "tools": [
     {
       "name": "@codepark/editor",
-      "handler": "/editor",
+      "handler": "/editor/index.html",
       "icon": "/replit.svg"
     },
     {
       "name": "@codepark/settings",
-      "handler": "/settings",
+      "handler": "/settings/index.html",
       "icon": "/replit.svg"
     },
     {
       "name": "@codepark/theme",
-      "handler": "/theme",
+      "handler": "/theme/index.html",
       "icon": "/replit.svg"
     }
   ],

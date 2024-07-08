@@ -23,17 +23,7 @@
     ],
     "esModuleInterop": true,
     "emitBOM": true,
-    "sourceMap": true,
-    "baseUrl": "./",
-    "paths": {
-      "@/app/*": [
-        "./src/*"
-      ],
-      "@/packages/*": [
-        "./packages/*"
-      ]
-    },
-    "allowSyntheticDefaultImports": true
+    "sourceMap": true
   },
   "include": [
     "src",
