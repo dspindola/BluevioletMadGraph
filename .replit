@@ -35,3 +35,7 @@ isExtension = true
 buildCommand = "replkit build"
 outputDirectory = "./dist"
 staticDirectory = "./public"
+
+[[ports]]
+localPort = 8080
+externalPort = 80
