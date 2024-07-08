@@ -1,22 +1,33 @@
-import { defineConfig } from "vite";
+import { defineConfig, InlineConfig } from "vite";
 import reactRefresh from "@vitejs/plugin-react-swc";
 import tsconfigPaths from 'vite-tsconfig-paths'
 import tailwindcss from '@tailwindcss/vite'
+import extension from "./extension.json"
+import { writeFile } from "node:fs/promises";
 
 const cwd = process.cwd();
-const root = `${cwd}/src/editor`;
+const root = `${cwd}/src`;
 const outDir = `${cwd}/dist`;
 
-export default defineConfig({
+function getPages(userConfig: InlineConfig, pattern: string) {
+    const glob = new Bun.Glob(pattern).scanSync({
+        cwd: userConfig.root
+    });
+
+    const paths = Array.from(glob).map(path => {
+        const [dir, ...rest] = path.split("/")
+        return [
+            dir,
+            `/${dir}/${rest.join("/")}`]
+    })
+
+    return Object.fromEntries(paths)
+}
+
+const config: InlineConfig = {
     plugins: [reactRefresh(), tsconfigPaths(), tailwindcss()],
+    publicDir: `${cwd}/public`,
     root,
-    build: {
-        outDir,
-        emptyOutDir: true,
-        sourcemap: true,
-        rollupOptions: {},
-        assetsDir: "./packages/assets"
-    },
     css: {
         devSourcemap: true
     },
@@ -32,4 +43,28 @@ export default defineConfig({
         port: 8080,
         host: "0.0.0.0"
     }
+}
+
+export default defineConfig({
+    ...config,
+    build: {
+        outDir,
+        emptyOutDir: true,
+        sourcemap: true,
+        rollupOptions: {
+            input: {
+                styles: "/styles.css",
+                ...getPages(config, "**/*.html")
+            },
+            plugins: [
+                {
+                    name: "copy",
+                    writeBundle: async () => {
+                        await writeFile('./dist/extension.json', JSON.stringify(extension, null, 2))
+                    }
+                }
+            ]
+        },
+        assetsDir: "assets"
+    },
 });

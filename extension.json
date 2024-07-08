@@ -12,6 +12,11 @@
       "name": "@codepark/settings",
       "handler": "/settings",
       "icon": "/replit.svg"
+    },
+    {
+      "name": "@codepark/theme",
+      "handler": "/theme",
+      "icon": "/replit.svg"
     }
   ],
   "scopes": [
