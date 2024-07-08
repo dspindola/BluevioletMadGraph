@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleDetection": "force",
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "allowJs": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "types": [
+      "vite/client",
+      "react",
+      "react-dom"
+    ],
+    "esModuleInterop": true,
+    "emitBOM": true,
+    "sourceMap": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/app/*": [
+        "./src/*"
+      ],
+      "@/packages/*": [
+        "./packages/*"
+      ]
+    },
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [
+    "src",
+    "packages",
+    "app-env.d.ts"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}
